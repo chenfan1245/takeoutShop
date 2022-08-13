@@ -13,7 +13,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
     @Override
-    public List<Tblorder> getNewOrder(String shopid,String date) {
+    public List<Tblorder> getNewOrder(String shopid,String date ) {
         List<Tblorder> orderList = orderMapper.getNewOrder(shopid,"27",date);
         return orderList;
     }

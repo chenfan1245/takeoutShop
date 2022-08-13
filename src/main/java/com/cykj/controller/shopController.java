@@ -37,18 +37,20 @@ public class shopController {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd");
         String ordertime = dateFormat.format(date);
         HashMap<String,String> map = new HashMap<>();
-        List<Tblorder> orderList = orderService.getNewOrder(shopid,ordertime);
+        List<Tblorder> orderList = orderService.getNewOrder(shopid,"");
         map.put("newOrder",orderList.size()+"");
-        List<Tblorder> backorderList = orderService.getChargeback(shopid,ordertime);
+        List<Tblorder> backorderList = orderService.getChargeback(shopid,"");
         map.put("backOrder",backorderList.size()+"");
-        List<Tblorder> sendOrders = orderService.getSending(shopid,ordertime);
+        List<Tblorder> sendOrders = orderService.getSending(shopid,"");
         map.put("sending",sendOrders.size()+"");
-        List<Tblorder> comorders = orderService.getcompleted(shopid,ordertime);
+        List<Tblorder> comorders = orderService.getcompleted(shopid,"");
         map.put("completed",comorders.size()+"");
         List<Tblcomment> tblcomments = commentService.getComment(shopid);
         map.put("comment",tblcomments.size()+"");
         String totalIncome = orderService.getProfitToday(shopid,"38",ordertime);
         map.put("totalIncome",totalIncome+"");
+        List<Tblorder> totalcomorders = orderService.getcompleted(shopid,ordertime);
+        map.put("totalcompleted",totalcomorders.size()+"");
         return map;
     }
 

@@ -4,12 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cykj.mapper.OrderMapper">
     <select id="getNewOrder" resultType="com.cykj.bean.Tblorder">
-        select * from tblorder where shopid=#{shopid} and orderstate = #{orderstate} and ordertime like concat("%",#{ordertime},"%")
+        select * from tblorder where shopid=#{shopid} and orderstate = #{orderstate}
+        <if test="ordertime!=null and ordertime!=''">
+            and  ordertime like concat("%",#{ordertime},"%")
+        </if>
     </select>
     <select id="getProfitToday" resultType="String">
-        select sum(actualmoney) as totalIncome from tblorder where shopid=#{shopid} and paystate=#{paystate} and
+        select sum(actualmoney) as totalIncome from tblorder where shopid=#{shopid} and paystate=#{paystate}
         <if test="ordertime!=null and ordertime!=''">
-            ordertime=#{ordertime}
+            and ordertime like concat("%",#{ordertime},"%")
         </if>
     </select>
 
