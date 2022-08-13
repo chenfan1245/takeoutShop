@@ -49,7 +49,7 @@ public class shopController {
         map.put("comment",tblcomments.size()+"");
         String totalIncome = orderService.getProfitToday(shopid,"38",ordertime);
         map.put("totalIncome",totalIncome+"");
-        List<Tblorder> totalcomorders = orderService.getcompleted(shopid,ordertime);
+        List<Tblorder> totalcomorders = orderService.getNewOrder(shopid,ordertime);
         map.put("totalcompleted",totalcomorders.size()+"");
         return map;
     }
