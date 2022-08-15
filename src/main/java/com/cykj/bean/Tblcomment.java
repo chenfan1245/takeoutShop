@@ -6,10 +6,36 @@ public class Tblcomment {
   private long orderid;
   private long shopid;
   private long userid;
+  private long roleid;
   private long commentid;
   private String commentcontent;
   private long commentscore;
+  private String username;
+  private String goodsname;
 
+  public long getRoleid() {
+    return roleid;
+  }
+
+  public void setRoleid(long roleid) {
+    this.roleid = roleid;
+  }
+
+  public String getUsername() {
+    return username;
+  }
+
+  public void setUsername(String username) {
+    this.username = username;
+  }
+
+  public String getGoodsname() {
+    return goodsname;
+  }
+
+  public void setGoodsname(String goodsname) {
+    this.goodsname = goodsname;
+  }
 
   public long getOrderid() {
     return orderid;
