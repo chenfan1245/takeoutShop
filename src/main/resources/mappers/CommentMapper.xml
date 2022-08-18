@@ -10,8 +10,8 @@
         FROM
         tblcomment
         INNER JOIN tbluser ON tblcomment.userid = tbluser.userid where shopid=#{shopid}
-        <if test="roleid!='' and roleid!=null">
-            and roleid = #{roleid}
+        <if test="roleid!=''">
+            and tblcomment.roleid = #{roleid}
         </if>
     </select>
     <insert id="subComment" parameterType="String">
@@ -21,7 +21,7 @@
         select * from tblcomment where orderid=#{orderid}
     </select>
     <update id="updrepStatue" parameterType="String">
-        update tblcomment set responsestatus="62" where orderid=#{orderid},shopid=#{shopid},userid=#{userid},roleid=#{roleid}
+        update tblcomment set responsestatus="62" where orderid=#{orderid} and shopid=#{shopid} and userid=#{userid} and roleid=#{roleid}
     </update>
     <select id="getNotShopComment" resultType="com.cykj.bean.Tblcomment">
         SELECT
@@ -31,7 +31,7 @@
         tblcomment
         INNER JOIN tbluser ON tblcomment.userid = tbluser.userid where shopid=#{shopid}
         <if test="roleid!='' and roleid!=null">
-            and roleid = #{roleid}
+            and tblcomment.roleid = #{roleid}
         </if>
         and responsestatus="61"
     </select>

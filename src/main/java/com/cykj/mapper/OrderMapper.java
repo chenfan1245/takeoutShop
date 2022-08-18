@@ -13,7 +13,9 @@ public interface OrderMapper {
 
     //商家获取新订单
     public List<Tblorder> getNewOrder(@Param("shopid")String shopid,@Param("orderstate")String orderstate,@Param("ordertime")String ordertime);
-
+    //获取今天完成的订单金额
     public String getProfitToday(@Param("shopid")String shopid,@Param("paystate")String paystate,@Param("ordertime")String ordertime);
+    //根据shopid获取订单信息
+    public List<Tblorder> getOrderInfo(@Param("shopid")String shopid);
 
 }

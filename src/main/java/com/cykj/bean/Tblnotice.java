@@ -8,8 +8,16 @@ public class Tblnotice {
   private String noticecontent;
   private long receiverid;
   private java.sql.Date noticetime;
-  private String noticestatus;
+  private String noticestate;
+  private String staffname;
 
+  public String getStaffname() {
+    return staffname;
+  }
+
+  public void setStaffname(String staffname) {
+    this.staffname = staffname;
+  }
 
   public long getNoticeid() {
     return noticeid;
@@ -56,12 +64,12 @@ public class Tblnotice {
   }
 
 
-  public String getNoticestatus() {
-    return noticestatus;
+  public String getNoticestate() {
+    return noticestate;
   }
 
-  public void setNoticestatus(String noticestatus) {
-    this.noticestatus = noticestatus;
+  public void setNoticestate(String noticestate) {
+    this.noticestate = noticestate;
   }
 
 }

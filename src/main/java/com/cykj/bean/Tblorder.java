@@ -18,6 +18,9 @@ public class Tblorder {
   private String paystate;
   private String orderstate;
   private double totalIncome;
+  private String statename;
+  private String userid;
+
 
   public Tblorder() {
   }
@@ -189,4 +192,19 @@ public class Tblorder {
     this.orderstate = orderstatus;
   }
 
+  public String getStatename() {
+    return statename;
+  }
+
+  public void setStatename(String statename) {
+    this.statename = statename;
+  }
+
+  public String getUserid() {
+    return userid;
+  }
+
+  public void setUserid(String userid) {
+    this.userid = userid;
+  }
 }

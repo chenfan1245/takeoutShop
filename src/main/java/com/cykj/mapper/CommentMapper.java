@@ -30,4 +30,6 @@ public interface CommentMapper {
 
     //获取商家未回复的用户评论
     public List<Tblcomment> getNotShopComment(@Param("shopid")String shopid,@Param("roleid")String roleid);
+
+
 }
