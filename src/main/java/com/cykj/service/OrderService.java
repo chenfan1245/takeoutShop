@@ -1,14 +1,13 @@
 package com.cykj.service;
 
 import com.cykj.bean.Tblorder;
-import com.cykj.bean.Tblrecaddress;
 
 import java.util.List;
 
 public interface OrderService {
 
     //新订单
-    public List<Tblorder> getNewOrder(String shopid,String dae);
+    public List<Tblorder> getNewOrder(String shopid, String dae);
     //退单订单
     public List<Tblorder> getChargeback(String shopid,String date);
     //正在派送订单

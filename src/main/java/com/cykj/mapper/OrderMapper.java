@@ -12,7 +12,7 @@ import java.util.List;
 public interface OrderMapper {
 
     //商家获取新订单
-    public List<Tblorder> getNewOrder(@Param("shopid")String shopid,@Param("orderstate")String orderstate,@Param("ordertime")String ordertime);
+    public List<Tblorder> getNewOrder(@Param("shopid")String shopid, @Param("orderstate")String orderstate, @Param("ordertime")String ordertime);
 
     public String getProfitToday(@Param("shopid")String shopid,@Param("paystate")String paystate,@Param("ordertime")String ordertime);
 

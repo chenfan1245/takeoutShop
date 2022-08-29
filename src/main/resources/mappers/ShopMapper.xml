@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cykj.mapper.ShopMapper">
+    <!--商家登录-->
+    <select id="ShopLogin" resultType="com.cykj.bean.Tblshop">
+        select  * from tblshop where shoptel=#{shoptel} and shoppwd=#{shoppwd}
+    </select>
+    <!--获取商家信息-->
+    <select id="getShopInfo" resultType="com.cykj.bean.Tblshop">
+        select  * from tblshop where shoptel=#{shoptel}
+    </select>
+    <!--查找角色id-->
+    <select id="getRole" resultType="com.cykj.bean.Tblrole">
+        select * from tblrole where roleid=#{roleid}
+    </select>
+    <!--获取商家订单-->
+    <select id="searchShopOrder" resultType="com.cykj.bean.Tblallshoporder">
+          SELECT a.orderno ,b.recname,b.recaddress,b.rectel ,a.orderid ,a.orderinfo,a.ordertime,a.actualmoney,a.deliveryfee,a.redpacketid
+        FROM tblorder  a ,tblrecaddress b  where a.addressid = b.addressid  and a.shopid=#{shopid}
+        <if test="orderstate!=null and paystate!=null">
+            and a.orderstate=#{orderstate} and a.paystate=#{paystate}
+        </if>
+        order by a.ordertime desc
+    </select>
+    <!--获取订单商品详情-->
+    <select id="searchOrderGoodsInfo" resultType="com.cykj.bean.Tblallshoporder">
+      SELECT c.goodsname ,b.bugnum ,c.goodsprice
+      FROM tblorder a ,tblbuygoods b ,tblgoods c where a.orderid = b.orderid and b.goodsid = c.goodsid  and a.orderid=#{orderid}
+    </select>
+    <!--获取获取订单红包详情-->
+    <select id="searchRedPacketInfo" resultType="com.cykj.bean.Tblredpacket">
+    SELECT * FROM tblredpacket where redpacketid=#{redpacketid}
+    </select>
+    <!--修改订单状态-->
+    <update id="orderStateChange" parameterType="tblorder">
+        update tblorder set orderstate = #{orderstate} where orderid = #{orderid}
+    </update>
+
+
+
+</mapper>
