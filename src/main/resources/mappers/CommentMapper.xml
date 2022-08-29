@@ -4,7 +4,35 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cykj.mapper.CommentMapper">
     <select id="getComment" resultType="com.cykj.bean.Tblcomment">
-        select * from tblcomment where shopid=#{shopid}
+        SELECT
+        tblcomment.*,
+        tbluser.username
+        FROM
+        tblcomment
+        INNER JOIN tbluser ON tblcomment.userid = tbluser.userid where shopid=#{shopid}
+        <if test="roleid!=''">
+            and tblcomment.roleid = #{roleid}
+        </if>
     </select>
-
+    <insert id="subComment" parameterType="String">
+        insert into tblcomment(orderid,shopid,userid,roleid,commentcontent) values (#{orderid},#{shopid},#{userid},"3",#{commentcontent})
+    </insert>
+    <select id="getCommentTwo" resultType="com.cykj.bean.Tblcomment">
+        select * from tblcomment where orderid=#{orderid}
+    </select>
+    <update id="updrepStatue" parameterType="String">
+        update tblcomment set responsestatus="62" where orderid=#{orderid} and shopid=#{shopid} and userid=#{userid} and roleid=#{roleid}
+    </update>
+    <select id="getNotShopComment" resultType="com.cykj.bean.Tblcomment">
+        SELECT
+        tblcomment.*,
+        tbluser.username
+        FROM
+        tblcomment
+        INNER JOIN tbluser ON tblcomment.userid = tbluser.userid where shopid=#{shopid}
+        <if test="roleid!='' and roleid!=null">
+            and tblcomment.roleid = #{roleid}
+        </if>
+        and responsestatus="61"
+    </select>
 </mapper>

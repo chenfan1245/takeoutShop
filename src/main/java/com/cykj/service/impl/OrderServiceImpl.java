@@ -41,4 +41,10 @@ public class OrderServiceImpl implements OrderService {
         String totalIncome = orderMapper.getProfitToday(shopid,paystate,date);
         return totalIncome;
     }
+
+    @Override
+    public List<Tblorder> getOrderInfo(String shopid) {
+        List<Tblorder> tblorders = orderMapper.getOrderInfo(shopid);
+        return tblorders;
+    }
 }

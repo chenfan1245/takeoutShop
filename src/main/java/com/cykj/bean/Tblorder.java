@@ -17,6 +17,13 @@ public class Tblorder {
   private String paystate;
   private String orderstate;
   private String esdeliverytime;
+  private double totalIncome;
+  private String statename;
+  private String userid;
+
+
+  public Tblorder() {
+  }
 
 
   public long getOrderid() {
@@ -144,4 +151,19 @@ public class Tblorder {
     this.esdeliverytime = esdeliverytime;
   }
 
+  public String getStatename() {
+    return statename;
+  }
+
+  public void setStatename(String statename) {
+    this.statename = statename;
+  }
+
+  public String getUserid() {
+    return userid;
+  }
+
+  public void setUserid(String userid) {
+    this.userid = userid;
+  }
 }

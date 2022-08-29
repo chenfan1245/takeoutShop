@@ -1,5 +1,6 @@
 package com.cykj;
 
+import com.cykj.web.WebSocketServlet;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ public class TakeoutShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(TakeoutShopApplication.class, args);
         System.out.println("http://localhost:9906");
+
     }
 
 }

@@ -16,4 +16,6 @@ public interface OrderService {
     public List<Tblorder> getcompleted(String shopid,String date);
     //获取今日收益
     public String getProfitToday(String shopid,String paystate,String date);
+    //获取订单详细信息
+    public List<Tblorder> getOrderInfo(String shopid);
 }

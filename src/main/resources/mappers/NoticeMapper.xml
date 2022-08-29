@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cykj.mapper.NoticeMapper">
+    <select id="getNotice" resultType="com.cykj.bean.Tblnotice">
+        SELECT
+            tblnotice.*,
+            tblstaff.staffname
+        FROM
+            tblnotice
+            INNER JOIN tblstaff ON tblnotice.senderid = tblstaff.staffid
+        WHERE
+            tblnotice.receiverid = #{shopid}
+            AND tblnotice.roleid = 3
+        ORDER BY
+            noticestate,
+            noticetime DESC
+    </select>
+    <update id="changeNoticeState" parameterType="String">
+        update tblnotice set noticestate="51" where noticeid=#{noticeid}
+    </update>
+    <delete id="deleteNotice" parameterType="String">
+        delete from tblnotice where noticeid=#{noticeid}
+    </delete>
+    <update id="allRead" parameterType="List">
+        update tblnotice set noticestate="51" where noticeid in
+        <foreach collection="noticeList" item="notice" separator="," open="(" close=")">
+            #{notice.noticeid}
+        </foreach>
+    </update>
+    <delete id="allDelete" parameterType="List">
+        delete  from tblnotice where  noticeid in
+        <foreach collection="noticeList" item="notice" separator="," open="(" close=")">
+            #{notice.noticeid}
+        </foreach>
+    </delete>
+</mapper>

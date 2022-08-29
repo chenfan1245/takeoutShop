@@ -15,5 +15,20 @@
             and ordertime like concat("%",#{ordertime},"%")
         </if>
     </select>
+    <select id="getOrderInfo" resultType="com.cykj.bean.Tblorder">
+        SELECT
+            tblorder.*,
+            tblstate.statename,
+            tblrecaddress.userid
+        FROM
+            tblorder
+            INNER JOIN tblstate ON tblorder.orderstate = tblstate.stateid
+            LEFT JOIN tblrecaddress ON tblorder.addressid = tblrecaddress.addressid
+        WHERE
+            tblorder.shopid = 1
+            AND tblorder.orderstate IN ( SELECT stateid FROM tblstate WHERE parentid = '26' AND stateid != "27" )
+        ORDER BY
+            ordertime DESC
+    </select>
 
 </mapper>

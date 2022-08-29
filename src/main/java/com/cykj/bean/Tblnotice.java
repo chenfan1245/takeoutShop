@@ -10,8 +10,17 @@ public class Tblnotice {
   private long receiverid;
   private long roleid;
   private java.sql.Date noticetime;
-  private long noticestate;
+  private String noticestate;
+  private String staffname;
 
+
+  public String getStaffname() {
+    return staffname;
+  }
+
+  public void setStaffname(String staffname) {
+    this.staffname = staffname;
+  }
 
   public long getNoticeid() {
     return noticeid;
@@ -76,12 +85,6 @@ public class Tblnotice {
   }
 
 
-  public long getNoticestate() {
-    return noticestate;
-  }
 
-  public void setNoticestate(long noticestate) {
-    this.noticestate = noticestate;
-  }
 
 }
